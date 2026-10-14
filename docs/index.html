@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; connect-src https://*.supabase.co; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دلت چی می‌خواد؟</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#F3F7FB;--card:#fff;--ink:#14284B;--mute:#5B6B85;--line:#D5DFEC;--accent:#14284B;--on:#fff;--teal:#1C8C8C;--tealbg:#E2F3F3;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0D1830;--card:#15264A;--ink:#EAF1FB;--mute:#9DB0CE;--line:#2A3E66;--accent:#5CC8C8;--on:#0D1830;--teal:#5CC8C8;--tealbg:#143B4A;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0D1830;--card:#15264A;--ink:#EAF1FB;--mute:#9DB0CE;--line:#2A3E66;--accent:#5CC8C8;--on:#0D1830;--teal:#5CC8C8;--tealbg:#143B4A;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.9;min-height:100vh;display:flex;justify-content:center;padding:24px 16px}
+main{width:100%;max-width:520px}
+.brand{font-weight:800;font-size:15px;color:var(--teal);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--teal)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 22px}
+h1{font-size:27px;line-height:1.6;margin:0 0 10px;font-weight:800}
+h2{font-size:21px;line-height:1.7;margin:0 0 18px;font-weight:600}
+p{margin:0 0 14px;color:var(--mute)}
+label{display:block;font-size:14px;font-weight:600;margin:12px 0 4px}
+input[type=text],select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:16px}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.chk{display:flex;gap:10px;align-items:flex-start;margin:16px 0 4px;font-weight:400;color:var(--ink);cursor:pointer}
+.chk input{margin-top:9px;width:18px;height:18px;accent-color:var(--teal)}
+.btn{width:100%;margin-top:18px;padding:13px;border:0;border-radius:12px;background:var(--accent);color:var(--on);font:inherit;font-weight:800;font-size:17px;cursor:pointer}
+.trust{font-size:13px;color:var(--mute);margin:14px 0 0;line-height:1.8}
+.err{color:#C0392B;font-size:13px;min-height:20px;margin:8px 0 0}
+.bar{height:6px;background:var(--line);border-radius:6px;margin-bottom:22px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--teal);transition:width .3s}
+.cnt{font-size:13px;color:var(--mute);margin-bottom:6px}
+.opt{display:block;width:100%;text-align:right;padding:13px 14px;margin-bottom:10px;border:1px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);font:inherit;cursor:pointer;transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--teal)}
+.opt.sel{border-color:var(--teal);background:var(--tealbg)}
+.res{font-size:44px;margin-bottom:4px}
+.link{display:block;text-align:center;text-decoration:none}
+.hide{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<style>
+body{--ink:#fff;--mute:rgba(255,255,255,.84);--line:rgba(255,255,255,.45);--bg:rgba(255,255,255,.14);--card:transparent;--accent:#fff;--on:#0E2A66;--teal:#fff;--tealbg:rgba(255,255,255,.3);color-scheme:light;background-color:#2f66b8;background-image:radial-gradient(60% 40% at 12% 8%,#6a4fd0 0,transparent 72%),radial-gradient(50% 38% at 92% 12%,#e3e9f5 0,transparent 72%),radial-gradient(65% 45% at 38% 48%,#35c0dc 0,transparent 76%),radial-gradient(55% 40% at 98% 55%,#0a1a8c 0,transparent 72%),radial-gradient(55% 38% at 22% 88%,#ab9bdc 0,transparent 72%);background-attachment:fixed}
+.card{background:linear-gradient(160deg,rgba(255,255,255,.26),rgba(255,255,255,.08));-webkit-backdrop-filter:blur(24px) saturate(140%);backdrop-filter:blur(24px) saturate(140%);border:1px solid rgba(255,255,255,.55);border-radius:36px;padding:30px 24px;box-shadow:0 24px 60px rgba(10,26,140,.28)}
+.brand{color:#fff}.dot{background:#fff}
+h1{font-size:30px;letter-spacing:-.3px}
+input[type=text],select{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.55);color:#fff;border-radius:14px}
+select option{color:#14284B}
+input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #fff}
+.btn{border-radius:999px;background:#fff;color:#0E2A66}
+.opt{border-radius:18px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.5);color:#fff}
+.opt:hover{background:rgba(255,255,255,.22);border-color:#fff}
+.opt.sel{background:rgba(255,255,255,.38);border-color:#fff}
+.bar{background:rgba(255,255,255,.3)}.bar i{background:#fff}
+.err{color:#FFE1E1}
+.who{display:flex;gap:14px;align-items:center;margin-bottom:22px;font-size:14px;line-height:1.9;color:#fff}
+.circ{width:48px;height:48px;border:1px solid rgba(255,255,255,.75);border-radius:50%;display:grid;place-items:center;flex:none;font-size:20px}
+.who span:last-child{font-size:17px;font-weight:600;line-height:1.9}
+.refbox{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.4)}
+.refrow{display:flex;gap:8px}.refrow input{flex:1;min-width:0;font-size:13px}
+.cp{padding:0 18px;border:0;border-radius:999px;background:#fff;color:#0E2A66;font:inherit;font-weight:800;cursor:pointer}
+.card{position:relative}
+.unfold{transform-origin:50% 0;animation:unf 1.4s cubic-bezier(.2,.8,.2,1) both}
+@keyframes unf{0%{transform:perspective(1100px) rotateX(-82deg) scaleY(.34);opacity:0}45%{opacity:1}72%{transform:perspective(1100px) rotateX(9deg) scaleY(1)}100%{transform:perspective(1100px) rotateX(0) scaleY(1)}}
+.scene{height:390px;perspective:900px;display:flex;justify-content:center;margin-bottom:8px}
+.tilt{position:relative;width:min(78vw,300px);height:360px;transform:rotateX(12deg) rotateY(-16deg);animation:fl 4s ease-in-out infinite}
+@keyframes fl{50%{translate:0 -6px}}
+.paperwrap{position:absolute;left:22%;width:56%;top:10px;height:240px;z-index:1;perspective:700px;animation:sl 1s ease-in-out 2.9s forwards}
+@keyframes sl{to{transform:translateY(118px) scale(.96)}}
+.p{position:absolute;left:0;width:100%;height:80px;background:#f3f6fd;box-shadow:0 2px 8px rgba(10,30,90,.28)}
+.p::after{content:"";position:absolute;inset:14px 16px;background:repeating-linear-gradient(to bottom,#b6c4e4 0 5px,transparent 5px 16px)}
+.p1{top:0;z-index:3;border-radius:10px 10px 0 0;transform-origin:50% 100%;animation:fo 1s ease 1.7s forwards}
+.p2{top:80px;z-index:1}
+.p3{top:160px;z-index:2;border-radius:0 0 10px 10px;transform-origin:50% 0;animation:fo 1s ease .6s forwards}
+@keyframes fo{to{transform:rotateX(180deg)}}
+.fcap{text-align:center;color:#fff;font-size:15px;opacity:0;animation:fi .8s ease 3.9s forwards}
+@keyframes fi{to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.unfold,.tilt,.fcap{animation:none!important}.fcap{opacity:1}.paperwrap,.p1,.p3{animation:none!important}.paperwrap{transform:translateY(118px) scale(.96)}.p1,.p3{transform:rotateX(180deg)}}
+input[type=tel]{width:100%;padding:11px 12px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.55);color:#fff;border-radius:14px;font:inherit;font-size:16px}
+input[type=tel]:focus-visible{outline:3px solid #fff}
+.tgtop{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.4)}
+.tgtop p,#tgbox p{margin:0 0 10px;font-size:14px}
+.ghost{background:transparent!important;color:#fff!important;border:1px solid rgba(255,255,255,.75)}
+.scene{height:auto;padding:10px 0 4px}
+.tilt{width:min(78vw,300px);height:auto;aspect-ratio:300/340;transform:rotateX(10deg) rotateY(-10deg)}
+.fsvg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.fb{z-index:0}.ff{z-index:3;filter:drop-shadow(0 16px 22px rgba(10,26,140,.4))}
+.sheet{position:absolute;z-index:1;width:50%;height:44%;top:23%;background:#dfe8f7;border-radius:10px;box-shadow:0 2px 6px rgba(10,30,90,.25)}
+.s1{left:16%;transform:rotate(-7deg)}.s2{left:34%;transform:rotate(6deg);background:#e9effa}
+.paperwrap{top:0;height:61.8%;z-index:2}
+.p{height:33.34%}.p2{top:33.33%}.p3{top:66.66%}
+@keyframes sl{to{transform:translateY(27%) scale(.96)}}
+.ftext{position:absolute;z-index:4;left:9%;right:9%;top:53%;bottom:7%;display:flex;flex-direction:column;justify-content:space-between}
+.ftext small{font-size:14px;color:#fff;opacity:.9}.ftext b{font-size:24px;font-weight:800;color:#fff;line-height:1.6}
+.tgtop{margin:0 0 6px;padding:0 0 14px;border-top:0;border-bottom:1px solid rgba(255,255,255,.4)}
+.lrow{display:flex;gap:10px}.lrow .btn{margin-top:0;flex:1;display:flex;align-items:center;justify-content:center;gap:8px;font-size:15px;padding:12px 8px}.lrow svg{width:20px;height:20px;flex:none}
+@media (prefers-reduced-motion:reduce){.paperwrap{transform:translateY(27%) scale(.96)}}
+.back{display:block;margin:12px auto 0;padding:9px 20px;border-radius:999px;border:1px solid rgba(255,255,255,.7);background:transparent;color:#fff;font:inherit;font-size:14px;cursor:pointer}
+.back:focus-visible{outline:3px solid #fff}
+/* ---- mobile / iOS Safari ---- */
+html{-webkit-text-size-adjust:100%}
+body{background-attachment:scroll;background-image:none;min-height:100vh;min-height:100dvh;overflow-x:hidden;padding-left:max(14px,env(safe-area-inset-left,0px));padding-right:max(14px,env(safe-area-inset-right,0px));-webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;top:0;left:0;right:0;bottom:0;z-index:-1;background-image:radial-gradient(60% 40% at 12% 8%,#6a4fd0 0,transparent 72%),radial-gradient(50% 38% at 92% 12%,#e3e9f5 0,transparent 72%),radial-gradient(65% 45% at 38% 48%,#35c0dc 0,transparent 76%),radial-gradient(55% 40% at 98% 55%,#0a1a8c 0,transparent 72%),radial-gradient(55% 38% at 22% 88%,#ab9bdc 0,transparent 72%)}
+button,a,select,input{touch-action:manipulation}
+input[type=text],input[type=tel],select,.btn,.opt,.back,.cp{-webkit-appearance:none;appearance:none}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='white' stroke-width='2'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 14px center;padding-left:38px}
+input[type=text],input[type=tel],select{min-height:46px;font-size:16px}
+.opt{min-height:50px}.back,.cp{min-height:44px}
+.opt:not(.sel):hover{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5)}
+@media (hover:hover){.opt:not(.sel):hover{background:rgba(255,255,255,.22);border-color:#fff}}
+.lrow{flex-wrap:wrap}.lrow .btn{min-width:140px}
+@media (max-width:420px){.card{padding:22px 16px;border-radius:28px}.who span:last-child{font-size:15px}.ftext b{font-size:21px}.refrow{flex-direction:column}.cp{width:100%}}
+@media (max-width:360px){.row{grid-template-columns:1fr}}
+textarea{width:100%;min-height:110px;padding:12px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.55);color:#fff;border-radius:14px;font:inherit;font-size:16px;resize:vertical;-webkit-appearance:none;appearance:none}
+textarea::placeholder,input::placeholder{color:rgba(255,255,255,.65)}
+textarea:focus-visible{outline:3px solid #fff}
+</style>
+</head>
+<body>
+<main>
+<div class="brand"><span class="dot"></span>دلت چی می‌خواد؟</div>
+
+<section id="intro" class="card unfold">
+  <div class="who"><span class="circ" aria-hidden="true">↓</span><span>سلام! من عارف هستم، طراح حرفه‌ای گرافیک. شما رو دعوت می‌کنم به یه همکاری کوچیک: ۱۰ سوال کوتاه تا با هم بفهمیم سلیقه‌ی تو چه شکلیه 👀</span></div>
+  <p>۱۰ سوال کوتاه جواب بده؛ آخرش یه نتیجه‌ی بامزه درباره‌ی خودت می‌گیری، می‌تونی به دوستات هم معرفی کنی، و شاید اولین نفری باشی که محصول جدید من رو می‌بینی.</p>
+  <div id="tgtop" class="tgtop"></div>
+  <div class="row">
+    <div><label for="fn">نام</label><input id="fn" type="text" maxlength="60" autocomplete="given-name"></div>
+    <div><label for="ln">نام خانوادگی</label><input id="ln" type="text" maxlength="60" autocomplete="family-name"></div>
+  </div>
+  <label for="age">سن</label>
+  <select id="age"><option value="">انتخاب کن</option><option>زیر ۱۸</option><option>۱۸ تا ۲۴</option><option>۲۵ تا ۳۴</option><option>۳۵ تا ۴۴</option><option>۴۵ به بالا</option></select>
+  <label for="ph">شماره موبایل (اختیاری)</label>
+  <input id="ph" type="tel" inputmode="tel" dir="ltr" autocomplete="tel" style="text-align:right">
+  <div class="err" id="err" role="alert"></div>
+  <button class="btn" id="start">بزن بریم!</button>
+  <p class="trust">من یه طراح گرافیکم و این پروژه رو می‌سازم. اطلاعاتت (به‌همراه اطلاعات فنی دستگاهت مثل نوع گوشی، مرورگر و شهر تقریبی) فقط برای بهتر شدن همین پروژه ذخیره می‌شه و جایی منتشر نمی‌شه. پیام تبلیغاتی مزاحم هم نمی‌فرستم.</p>
+</section>
+
+<section id="quiz" class="card hide">
+  <div class="bar"><i id="pb"></i></div>
+  <div class="cnt" id="cnt"></div>
+  <h2 id="q"></h2>
+  <div id="opts"></div>
+  <button class="back hide" id="back" type="button">سوال قبلی</button>
+</section>
+
+<section id="fold" class="hide">
+  <div class="scene"><div class="tilt">
+    <svg class="fsvg fb" viewBox="0 0 300 340" aria-hidden="true"><path d="M14 118Q14 100 32 100H98Q108 100 114 108L122 118H268Q286 118 286 136V318Q286 336 268 336H32Q14 336 14 318Z" fill="rgba(22,56,128,.82)" stroke="rgba(255,255,255,.4)"/></svg>
+    <div class="sheet s1"></div><div class="sheet s2"></div>
+    <div class="paperwrap"><div class="p p1"></div><div class="p p2"></div><div class="p p3"></div></div>
+    <svg class="fsvg ff" viewBox="0 0 300 340" aria-hidden="true"><defs><linearGradient id="gf" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".5"/><stop offset="1" stop-color="#fff" stop-opacity=".16"/></linearGradient></defs><path d="M14 158Q14 140 32 140H112Q122 140 128 148L136 158H268Q286 158 286 176V318Q286 336 268 336H32Q14 336 14 318Z" fill="url(#gf)" stroke="rgba(255,255,255,.7)"/></svg>
+    <div class="ftext"><small>#پاسخ‌نامه</small><b id="fname"></b></div>
+  </div></div>
+  <p class="fcap">پاسخ‌نامه‌ات تا شد و توی پوشه‌ی من قرار گرفت. برات نگهش می‌دارم.</p>
+</section>
+
+<section id="done" class="card hide">
+  <div class="res" id="emoji"></div>
+  <h1 id="rt"></h1>
+  <p id="rd"></p>
+  <div id="tgbox"></div>
+  <div class="refbox"><p>دوستات رو دعوت کن! به ازای هر دوستی که با لینک تو تست رو انجام بده، ۱۵٪ تخفیف روی محصول من می‌گیری.</p><div class="refrow"><input id="reflink" type="text" readonly dir="ltr" aria-label="لینک دعوت"><button class="cp" id="cp" type="button">کپی</button></div></div>
+  <p class="trust">ممنون که وقت گذاشتی. جواب‌های تو مستقیم روی چیزی که می‌سازم اثر می‌ذاره.</p>
+</section>
+</main>
+
+<script>
+const TG_URL = "";
+// ===== تنظیمات Supabase (از Project Settings > API) =====
+const SUPABASE_URL = "https://mttdbdhlkdhjeqijhxbq.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10dGRiZGhsa2RoamVxaWpoeGJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5OTgyMzUsImV4cCI6MjEwNzU3NDIzNX0.2a_EUcmZfa0liZato_uCXnhcPA3IPn88HPZoArOuFBw"; // کلید anon/publishable؛ نه service_role!
+// لینک دعوت به‌صورت خودکار آدرس همین سایت بعد از انتشار می‌شه
+const REF_BASE = location.origin + location.pathname;
+const MY_REF = Math.random().toString(36).slice(2,8);
+let INVITER = "";
+try{INVITER = (new URLSearchParams(location.search).get("ref") || "").toLowerCase().replace(/[^a-z0-9]/g,"").slice(0,12)}catch(e){}
+const IG_URL = ""; // لینک اینستاگرام شخصی، مثلا https://instagram.com/your_id // لینک کانال تلگرام، مثلا https://t.me/your_channel
+const Q = [
+["فردا یک روز تعطیل غیرمنتظره داری. چی کار می‌کنی؟",["یه چیز دست‌ساز یا خلاقانه درست می‌کنم","خونه یا اتاقم رو مرتب و قشنگ می‌کنم","می‌رم بیرون؛ کافه یا گردش","فیلم و سریال و استراحت"]],
+["اگه یه گوشه از زندگیت رو بشه قشنگ‌تر کرد، کدومه؟",["میز کار یا درس","دیوار خونه","وسایل همراهم (کیف، گوشی، لپ‌تاپ)","خودم (لباس و اکسسوری)"]],
+["آخرین باری که برای یه چیز «بی‌دلیل ولی خوشحال‌کننده» پول دادی، چی بود؟",["یه وسیله‌ی دکوری یا کاربردی کوچک","کتاب، دفتر یا لوازم‌التحریر","اشتراک یا آموزش آنلاین","خوراکی یا هدیه برای یکی"]],
+["کدوم نوع محصول بیشتر وسوسه‌ت می‌کنه؟",["چیز فیزیکی که بشه لمسش کرد","فایل دیجیتال (قالب، پوستر، فونت و...)","دوره یا آموزش","چیزی که مخصوص خودم یا هدیه سفارشی بشه"]],
+["برای خریدن یه چیز کوچک و خاص، تا چه مبلغی راحتی؟",["تا ۲۰۰ هزار تومان","۲۰۰ تا ۵۰۰ هزار تومان","۵۰۰ هزار تا ۱ میلیون تومان","بیشتر از ۱ میلیون، اگه ارزشش رو داشته باشه"]],
+["وقتی چیزی می‌بینی، اول از همه چی باعث می‌شه بخریش؟",["ظاهر و طراحی قشنگش","کاربردی بودنش","داستان یا ایده‌ی پشتش","قیمت مناسب"]],
+["معمولاً بیشتر برای کی خرید می‌کنی؟",["خودم","دوست یا پارتنر (هدیه)","خانواده","محل کار یا همکارها"]],
+["کدوم حس بصری بیشتر به دلت می‌شینه؟",["مینیمال و آرام","رنگی و شاد و شیطون","نوستالژیک و ایرانی","تیره، مدرن و جدی"]],
+["چه چیزی توی روزمره‌ت اذیتت می‌کنه و کاش کسی خوب طراحیش می‌کرد؟",["بی‌نظمی و شلوغی وسایل","ظاهر خسته‌کننده‌ی میز یا خونه","پیدا کردن هدیه‌ی خاص و قشنگ","برنامه‌ریزی و مدیریت کارها و زمانم"]],
+["اگه هر ماه یه بسته‌ی سورپرایز طراحی‌شده برات بیاد، دوست داری توش چی باشه؟",["استیکر، کارت‌پستال و پوستر کوچک","دفتر، planner و لوازم‌التحریر","یه وسیله‌ی کاربردی کوچک","فایل‌های دیجیتال و ابزار طراحی"]]
+];
+const R = [
+["🌿","آدم مینیمال و آرام","تو دنبال چیزهایی هستی که ساده، تمیز و بی‌ادعان. کمتر ولی بهتر؛ هر چیزی که رو میزت یا دیوارت می‌ذاری باید دلیل داشته باشه."],
+["🎨","آدم رنگی و شیطون","تو به زندگی رنگ می‌دی! چیزی که حالت رو خوب کنه و لبخند بیاره روی صورتت، برات ارزش خرید داره."],
+["🏺","آدم نوستالژیک و ریشه‌دار","تو حال‌وهوای قدیمی و ایرانی رو دوست داری؛ چیزهایی که یه داستان و حس آشنا پشتشون باشه."],
+["🌙","آدم مدرن و جدی","تو سبک تیره، قاطع و حرفه‌ای رو می‌پسندی؛ چیزهایی که مرتب، باکیفیت و با شخصیت باشن."]
+];
+const T0 = Date.now();
+async function collectDevice(){
+  const n=navigator, d={};
+  const safe=(k,f)=>{try{const v=f();if(v!==undefined&&v!==null&&v!=="")d[k]=v}catch(e){}};
+  safe("platform",()=>n.platform);
+  safe("language",()=>n.language);
+  safe("languages",()=>(n.languages||[]).slice(0,5));
+  safe("timezone",()=>Intl.DateTimeFormat().resolvedOptions().timeZone);
+  safe("tzOffsetMin",()=>new Date().getTimezoneOffset());
+  safe("screen",()=>screen.width+"x"+screen.height);
+  safe("viewport",()=>innerWidth+"x"+innerHeight);
+  safe("pixelRatio",()=>devicePixelRatio);
+  safe("colorDepth",()=>screen.colorDepth);
+  safe("touchPoints",()=>n.maxTouchPoints);
+  safe("cpuCores",()=>n.hardwareConcurrency);
+  safe("memoryGB",()=>n.deviceMemory);
+  safe("online",()=>n.onLine);
+  safe("darkMode",()=>matchMedia("(prefers-color-scheme:dark)").matches);
+  safe("connection",()=>{const c=n.connection;return c?{type:c.effectiveType,downlink:c.downlink,rtt:c.rtt,saveData:c.saveData}:undefined});
+  safe("referrer",()=>document.referrer.slice(0,300));
+  safe("page",()=>location.href.split("#")[0].slice(0,300));
+  safe("utm",()=>{const p=new URLSearchParams(location.search),o={};["utm_source","utm_medium","utm_campaign","utm_content"].forEach(k=>{if(p.get(k))o[k]=p.get(k).slice(0,80)});return Object.keys(o).length?o:undefined});
+  try{
+    const u=n.userAgentData;
+    if(u){
+      const x={mobile:u.mobile,platform:u.platform,brands:(u.brands||[]).map(b=>b.brand+" "+b.version)};
+      try{
+        const h=await Promise.race([u.getHighEntropyValues(["model","platformVersion","architecture","fullVersionList"]),new Promise((_,r)=>setTimeout(r,800))]);
+        x.model=h.model;x.platformVersion=h.platformVersion;x.architecture=h.architecture;
+      }catch(e){}
+      d.uaData=x;
+    }
+  }catch(e){}
+  return d;
+}
+const $ = id => document.getElementById(id);
+const user = {}, ans = [];
+let i = 0;
+function show(id){["intro","quiz","fold","done"].forEach(s=>$(s).classList.toggle("hide",s!==id));window.scrollTo(0,0)}
+$("start").onclick = () => {
+  const fn=$("fn").value.trim(), ln=$("ln").value.trim(), age=$("age").value;
+  if(!fn||!ln||!age){$("err").textContent="لطفاً نام، نام خانوادگی و سن رو پر کن.";return}
+  $("err").textContent="";
+  const ph=$("ph").value.trim();
+  if(ph&&!/^[0-9۰-۹+\s-]{7,16}$/.test(ph)){$("err").textContent="شماره موبایل درست نیست؛ می‌تونی خالیش بذاری.";return}
+  Object.assign(user,{first:fn,last:ln,age:age,phone:ph});
+  show("quiz"); render();
+};
+function render(){
+  if(i===Q.length){renderComment();return}
+  $("cnt").textContent="سوال "+(i+1).toLocaleString("fa")+" از "+Q.length.toLocaleString("fa");
+  $("pb").style.width=(i/Q.length*100)+"%";
+  $("q").textContent=Q[i][0];
+  $("back").classList.toggle("hide",i===0);
+  const box=$("opts"); box.textContent="";
+  Q[i][1].forEach((t,k)=>{
+    const b=document.createElement("button");
+    b.className="opt"+(ans[i]===k?" sel":""); b.type="button"; b.textContent=t;
+    b.onclick=()=>{if(lock)return;lock=true;b.classList.add("sel");ans[i]=k;setTimeout(()=>{lock=false;next()},220)};
+    box.appendChild(b);
+  });
+}
+let lock=false,comment="";
+function renderComment(){
+  $("cnt").textContent="یه قدم آخر (اختیاری)";$("pb").style.width="100%";
+  $("q").textContent="نظرت چیه؟ هر پیشنهاد یا حرفی داری برام بنویس.";
+  $("back").classList.remove("hide");
+  const box=$("opts");box.textContent="";
+  const t=document.createElement("textarea");t.id="cm";t.rows=4;t.maxLength=600;t.value=comment;t.setAttribute("aria-label","نظر شما");t.placeholder="مثلاً: دوست دارم یه محصول ... ببینم";box.appendChild(t);
+  const h=document.createElement("p");h.className="trust";h.textContent="نوشتن نظر اختیاریه؛ اگه نمی‌خوای، همین دکمه رو بزن.";box.appendChild(h);
+  const b=document.createElement("button");b.className="btn";b.type="button";b.textContent="ثبت و دیدن نتیجه";
+  b.onclick=()=>{b.disabled=true;comment=t.value.trim();finish()};box.appendChild(b);
+}
+$("back").onclick=()=>{if(lock||i===0)return;if(i===Q.length){const t=$("cm");if(t)comment=t.value}i--;render()};
+function next(){ i++; render(); }
+$("cp").onclick=async()=>{const f=$("reflink");try{await navigator.clipboard.writeText(f.value);$("cp").textContent="کپی شد"}catch(e){f.focus();f.select();f.setSelectionRange(0,99999);document.execCommand("copy");$("cp").textContent="کپی شد"}};
+function tgBlock(box,txt,ghost){const t=document.createElement("p");t.textContent=txt;box.appendChild(t);const row=document.createElement("div");row.className="lrow";const I='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true">';[["کانال تلگرام",TG_URL,I+'<path d="M21 4 3 11l6 2 2 6 3-4 5 3z"/></svg>'],["اینستاگرام",IG_URL,I+'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>']].forEach(([n,u,ic])=>{const a=document.createElement("a");a.className="btn link"+(ghost?" ghost":"");a.href=u||"#";if(u){a.target="_blank";a.rel="noopener"}else{a.addEventListener("click",e=>e.preventDefault())}a.innerHTML=ic;a.appendChild(document.createTextNode(n));row.appendChild(a)});box.appendChild(row)}
+tgBlock($("tgtop"),"کانال تلگرام و صفحه‌ی اینستاگرام من رو اگه دوست داشتی دنبال کن تا منو توی این مسیر همراهی کنی.",true);
+async function finish(){
+  $("reflink").value=REF_BASE+"?ref="+MY_REF;
+  $("pb").style.width="100%";
+  const r=R[ans[7]]||R[0];
+  $("emoji").textContent=r[0]; $("rt").textContent="تو یه "+r[1]+" هستی"; $("rd").textContent=r[2];
+  const box=$("tgbox"); box.textContent="";
+  tgBlock(box,"برای دیدن نتیجه‌ی این تست در آینده پیشنهاد می‌کنم توی کانال تلگرامی ما عضو بشید.");
+  show("fold");$("fname").textContent="پاسخ‌نامه‌ی "+user.first;setTimeout(()=>{$("done").classList.remove("hide");$("done").scrollIntoView({behavior:"smooth",block:"start"})},matchMedia("(prefers-reduced-motion:reduce)").matches?300:5400);
+  const rec=Object.assign({},user,{answers:ans.slice(),ts:Date.now(),myRef:MY_REF,invitedBy:INVITER,comment:comment});
+  const device=await collectDevice();
+  try{
+    const res=await fetch(SUPABASE_URL+"/rest/v1/responses",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json",
+        "apikey":SUPABASE_ANON_KEY,
+        "Authorization":"Bearer "+SUPABASE_ANON_KEY,
+        "Prefer":"return=minimal"
+      },
+      body:JSON.stringify({
+        first_name:rec.first.slice(0,60),
+        last_name:rec.last.slice(0,60),
+        age_range:rec.age,
+        phone:rec.phone||null,
+        answers:rec.answers,
+        comment:(rec.comment||"").slice(0,600)||null,
+        my_ref:rec.myRef,
+        invited_by:rec.invitedBy||null,
+        user_agent:(navigator.userAgent||"").slice(0,500),
+        device:device,
+        duration_seconds:Math.round((Date.now()-T0)/1000)
+      })
+    });
+    if(!res.ok) console.error("Supabase error",res.status,await res.text());
+  }catch(e){console.error(e)}
+  try{localStorage.setItem("salighe_last",JSON.stringify(rec))}catch(e){}
+}
+</script>
+</body>
+</html>

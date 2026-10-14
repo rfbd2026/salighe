@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src data:; connect-src https://*.supabase.co; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>پنل مدیریت | دلت چی می‌خواد؟</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#F3F7FB;--card:#fff;--ink:#14284B;--mute:#5B6B85;--line:#D5DFEC;--accent:#14284B;--on:#fff;--teal:#1C8C8C;--tealbg:#E2F3F3;--bad:#C0392B;--soft:#EEF3F9;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0D1830;--card:#15264A;--ink:#EAF1FB;--mute:#9DB0CE;--line:#2A3E66;--accent:#5CC8C8;--on:#0D1830;--teal:#5CC8C8;--tealbg:#143B4A;--bad:#FF8A7A;--soft:#102043;color-scheme:dark}}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Vazirmatn",Tahoma,sans-serif;line-height:1.8;padding:max(16px,env(safe-area-inset-top)) max(14px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) max(14px,env(safe-area-inset-left))}
+.wrap{max-width:1100px;margin:0 auto}
+h1{font-size:22px;margin:0;font-weight:800}
+h2{font-size:17px;margin:0 0 12px;font-weight:800}
+h3{font-size:14px;margin:0 0 10px;font-weight:600;line-height:1.7}
+.hide{display:none!important}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+label{display:block;font-size:14px;font-weight:600;margin:12px 0 4px}
+input,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;font-size:16px;min-height:44px}
+button{font:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,tr:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.btn{padding:10px 16px;border:0;border-radius:10px;background:var(--accent);color:var(--on);font-weight:800;min-height:44px}
+.btn.alt{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:600}
+.btn.danger{background:transparent;color:var(--bad);border:1px solid var(--bad);font-weight:600}
+.btn:disabled{opacity:.6;cursor:wait}
+.err{color:var(--bad);font-size:14px;min-height:22px;margin:8px 0 0}
+#login{max-width:400px;margin:12vh auto 0}
+#login p{color:var(--mute);margin:6px 0 14px;font-size:14px}
+.top{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.top .acts{display:flex;flex-wrap:wrap;gap:8px}
+.tabs{display:flex;gap:6px;margin-bottom:14px;border-bottom:1px solid var(--line)}
+.tab{background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;color:var(--mute);font-weight:600}
+.tab[aria-selected=true]{color:var(--ink);border-bottom-color:var(--teal)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.stat b{display:block;font-size:26px;line-height:1.3}
+.stat span{font-size:13px;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.bar{display:grid;grid-template-columns:minmax(110px,1.3fr) 2fr auto;gap:8px;align-items:center;font-size:13px;margin:6px 0}
+.bar .lb{overflow-wrap:anywhere}
+.bar .tr{height:9px;background:var(--soft);border-radius:9px;overflow:hidden}
+.bar .tr i{display:block;height:100%;background:var(--teal);border-radius:9px}
+.bar .n{color:var(--mute);white-space:nowrap}
+.q{margin-top:14px}
+.tools{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.tools input{flex:1;min-width:200px}
+.tools select{width:auto;min-width:150px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:760px}
+th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-weight:600;color:var(--mute);background:var(--soft);position:sticky;top:0}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:var(--tealbg)}
+td.wrapc{white-space:normal;min-width:140px;max-width:260px;overflow-wrap:anywhere}
+.mut{color:var(--mute)}
+.pill{display:inline-block;padding:0 8px;border-radius:999px;background:var(--tealbg);color:var(--teal);font-size:12px;font-weight:600}
+.empty{padding:28px;text-align:center;color:var(--mute)}
+dialog{width:min(640px,calc(100vw - 24px));max-height:88vh;border:1px solid var(--line);border-radius:16px;background:var(--card);color:var(--ink);padding:0;font:inherit}
+dialog::backdrop{background:rgba(5,12,30,.6)}
+.dh{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--card)}
+.db{padding:6px 18px 18px;overflow:auto;max-height:calc(88vh - 120px)}
+.sec{margin-top:16px}
+.sec h3{color:var(--teal)}
+dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:0;font-size:14px}
+dt{color:var(--mute)}
+dd{margin:0;overflow-wrap:anywhere}
+.qa{padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.qa small{display:block;color:var(--mute)}
+.cm{white-space:pre-wrap;background:var(--soft);border-radius:10px;padding:10px 12px;font-size:14px}
+.df{display:flex;justify-content:space-between;gap:8px;padding:12px 18px;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section id="login" class="card">
+  <h1>ورود به پنل مدیریت</h1>
+  <p>فقط با ایمیل و رمزی که توی Supabase برای ادمین ساختی وارد شو.</p>
+  <label for="em">ایمیل</label>
+  <input id="em" type="email" dir="ltr" autocomplete="username">
+  <label for="pw">رمز عبور</label>
+  <input id="pw" type="password" dir="ltr" autocomplete="current-password">
+  <div class="err" id="lerr" role="alert"></div>
+  <button class="btn" id="lbtn" type="button" style="width:100%;margin-top:6px">ورود</button>
+</section>
+
+<section id="app" class="hide">
+  <div class="top">
+    <h1>پاسخ‌های «دلت چی می‌خواد؟»</h1>
+    <div class="acts">
+      <button class="btn alt" id="refresh" type="button">بروزرسانی</button>
+      <button class="btn alt" id="csv" type="button">دانلود CSV</button>
+      <button class="btn alt" id="logout" type="button">خروج</button>
+    </div>
+  </div>
+  <div class="err" id="gerr" role="alert"></div>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" id="t-sum" aria-selected="true">خلاصه آمار</button>
+    <button class="tab" role="tab" id="t-list" aria-selected="false">تک‌تک پاسخ‌ها</button>
+  </div>
+
+  <div id="p-sum">
+    <div class="stats" id="stats"></div>
+    <div class="grid" id="charts"></div>
+    <h2 class="q">جواب هر سوال</h2>
+    <div class="grid" id="qcharts"></div>
+  </div>
+
+  <div id="p-list" class="hide">
+    <div class="tools">
+      <input id="search" type="search" placeholder="جستجو در نام، موبایل، نظر، دستگاه..." aria-label="جستجو">
+      <select id="fres" aria-label="فیلتر نتیجه"><option value="">همه‌ی نتیجه‌ها</option></select>
+    </div>
+    <div class="tw"><table>
+      <thead><tr><th>زمان</th><th>نام</th><th>سن</th><th>موبایل</th><th>نتیجه</th><th>دستگاه</th><th>سیستم‌عامل</th><th>مرورگر</th><th>کشور</th><th>نظر</th></tr></thead>
+      <tbody id="tb"></tbody>
+    </table></div>
+    <p class="mut" id="cntline"></p>
+  </div>
+</section>
+</div>
+
+<dialog id="dlg" aria-labelledby="dtitle">
+  <div class="dh"><strong id="dtitle"></strong><button class="btn alt" id="dclose" type="button">بستن</button></div>
+  <div class="db" id="dbody"></div>
+  <div class="df"><button class="btn danger" id="ddel" type="button">حذف این پاسخ</button></div>
+</dialog>
+
+<script>
+// ===== همون مقادیر index.html =====
+const SUPABASE_URL = "https://mttdbdhlkdhjeqijhxbq.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10dGRiZGhsa2RoamVxaWpoeGJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE5OTgyMzUsImV4cCI6MjEwNzU3NDIzNX0.2a_EUcmZfa0liZato_uCXnhcPA3IPn88HPZoArOuFBw";
+
+const Q = [
+["فردا یک روز تعطیل غیرمنتظره داری. چی کار می‌کنی؟",["یه چیز دست‌ساز یا خلاقانه درست می‌کنم","خونه یا اتاقم رو مرتب و قشنگ می‌کنم","می‌رم بیرون؛ کافه یا گردش","فیلم و سریال و استراحت"]],
+["اگه یه گوشه از زندگیت رو بشه قشنگ‌تر کرد، کدومه؟",["میز کار یا درس","دیوار خونه","وسایل همراهم (کیف، گوشی، لپ‌تاپ)","خودم (لباس و اکسسوری)"]],
+["آخرین باری که برای یه چیز «بی‌دلیل ولی خوشحال‌کننده» پول دادی، چی بود؟",["یه وسیله‌ی دکوری یا کاربردی کوچک","کتاب، دفتر یا لوازم‌التحریر","اشتراک یا آموزش آنلاین","خوراکی یا هدیه برای یکی"]],
+["کدوم نوع محصول بیشتر وسوسه‌ت می‌کنه؟",["چیز فیزیکی که بشه لمسش کرد","فایل دیجیتال (قالب، پوستر، فونت و...)","دوره یا آموزش","چیزی که مخصوص خودم یا هدیه سفارشی بشه"]],
+["برای خریدن یه چیز کوچک و خاص، تا چه مبلغی راحتی؟",["تا ۲۰۰ هزار تومان","۲۰۰ تا ۵۰۰ هزار تومان","۵۰۰ هزار تا ۱ میلیون تومان","بیشتر از ۱ میلیون، اگه ارزشش رو داشته باشه"]],
+["وقتی چیزی می‌بینی، اول از همه چی باعث می‌شه بخریش؟",["ظاهر و طراحی قشنگش","کاربردی بودنش","داستان یا ایده‌ی پشتش","قیمت مناسب"]],
+["معمولاً بیشتر برای کی خرید می‌کنی؟",["خودم","دوست یا پارتنر (هدیه)","خانواده","محل کار یا همکارها"]],
+["کدوم حس بصری بیشتر به دلت می‌شینه؟",["مینیمال و آرام","رنگی و شاد و شیطون","نوستالژیک و ایرانی","تیره، مدرن و جدی"]],
+["چه چیزی توی روزمره‌ت اذیتت می‌کنه و کاش کسی خوب طراحیش می‌کرد؟",["بی‌نظمی و شلوغی وسایل","ظاهر خسته‌کننده‌ی میز یا خونه","پیدا کردن هدیه‌ی خاص و قشنگ","برنامه‌ریزی و مدیریت کارها و زمانم"]],
+["اگه هر ماه یه بسته‌ی سورپرایز طراحی‌شده برات بیاد، دوست داری توش چی باشه؟",["استیکر، کارت‌پستال و پوستر کوچک","دفتر، planner و لوازم‌التحریر","یه وسیله‌ی کاربردی کوچک","فایل‌های دیجیتال و ابزار طراحی"]]
+];
+const R = [
+["🌿","آدم مینیمال و آرام","تو دنبال چیزهایی هستی که ساده، تمیز و بی‌ادعان. کمتر ولی بهتر؛ هر چیزی که رو میزت یا دیوارت می‌ذاری باید دلیل داشته باشه."],
+["🎨","آدم رنگی و شیطون","تو به زندگی رنگ می‌دی! چیزی که حالت رو خوب کنه و لبخند بیاره روی صورتت، برات ارزش خرید داره."],
+["🏺","آدم نوستالژیک و ریشه‌دار","تو حال‌وهوای قدیمی و ایرانی رو دوست داری؛ چیزهایی که یه داستان و حس آشنا پشتشون باشه."],
+["🌙","آدم مدرن و جدی","تو سبک تیره، قاطع و حرفه‌ای رو می‌پسندی؛ چیزهایی که مرتب، باکیفیت و با شخصیت باشن."]
+];
+
+const $=id=>document.getElementById(id);
+let token=null, rows=[], current=null;
+const fa=n=>Number(n).toLocaleString("fa");
+const fmtDate=t=>{try{return new Date(t).toLocaleString("fa-IR",{dateStyle:"short",timeStyle:"short"})}catch(e){return t}};
+function mk(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e}
+
+/* ---------- auth ---------- */
+async function login(){
+  $("lerr").textContent="";$("lbtn").disabled=true;
+  try{
+    const r=await fetch(SUPABASE_URL+"/auth/v1/token?grant_type=password",{method:"POST",headers:{"Content-Type":"application/json",apikey:SUPABASE_ANON_KEY},body:JSON.stringify({email:$("em").value.trim(),password:$("pw").value})});
+    const d=await r.json();
+    if(!r.ok){$("lerr").textContent="ایمیل یا رمز اشتباهه.";return}
+    token=d.access_token;$("pw").value="";
+    $("login").classList.add("hide");$("app").classList.remove("hide");
+    await load();
+  }catch(e){$("lerr").textContent="اتصال به Supabase برقرار نشد. آدرس و کلید رو بررسی کن."}
+  finally{$("lbtn").disabled=false}
+}
+function logout(){token=null;rows=[];$("app").classList.add("hide");$("login").classList.remove("hide")}
+
+/* ---------- data ---------- */
+async function load(){
+  $("gerr").textContent="";$("refresh").disabled=true;
+  try{
+    const all=[];
+    for(let off=0;;off+=1000){
+      const r=await fetch(SUPABASE_URL+"/rest/v1/responses?select=*&order=created_at.desc",{headers:{apikey:SUPABASE_ANON_KEY,Authorization:"Bearer "+token,"Range-Unit":"items",Range:off+"-"+(off+999)}});
+      if(r.status===401){logout();$("lerr").textContent="نشست تموم شده؛ دوباره وارد شو.";return}
+      if(!r.ok){throw new Error(await r.text())}
+      const a=await r.json();all.push(...a);if(a.length<1000)break;
+    }
+    rows=all;
+    if(!rows.length){/* may be empty or not an admin */}
+    renderAll();
+  }catch(e){$("gerr").textContent="خطا در گرفتن داده‌ها: "+e.message}
+  finally{$("refresh").disabled=false}
+}
+
+/* ---------- parsing ---------- */
+function parseUA(ua){
+  ua=ua||"";let os="نامشخص",br="نامشخص",m;
+  if((m=ua.match(/Android ([\d.]+)/)))os="Android "+m[1];
+  else if(/iPhone|iPad|iPod/.test(ua)){m=ua.match(/OS (\d+)[_\d]*/);os="iOS"+(m?" "+m[1]:"")}
+  else if(/Windows NT/.test(ua))os="Windows";
+  else if(/Mac OS X/.test(ua))os="macOS";
+  else if(/CrOS/.test(ua))os="ChromeOS";
+  else if(/Linux/.test(ua))os="Linux";
+  if(/Instagram/.test(ua))br="مرورگر داخلی اینستاگرام";
+  else if(/Telegram/i.test(ua))br="مرورگر داخلی تلگرام";
+  else if(/FBAN|FBAV/.test(ua))br="مرورگر داخلی فیسبوک";
+  else if(/Edg\//.test(ua))br="Edge";
+  else if(/OPR\/|Opera/.test(ua))br="Opera";
+  else if(/SamsungBrowser/.test(ua))br="Samsung Internet";
+  else if(/Firefox|FxiOS/.test(ua))br="Firefox";
+  else if(/CriOS|Chrome/.test(ua))br="Chrome";
+  else if(/Safari/.test(ua))br="Safari";
+  return{os,br}
+}
+function model(r){
+  const d=r.device||{},u=d.uaData||{};
+  if(u.model)return u.model;
+  const ua=r.user_agent||"";let m;
+  if((m=ua.match(/;\s*([^;)]+?)\s+Build\//)))return m[1];
+  if(/iPhone/.test(ua))return"iPhone";
+  if(/iPad/.test(ua))return"iPad";
+  if(/Android/.test(ua))return"Android (مدل مشخص نیست)";
+  if(/Windows|Macintosh|Linux/.test(ua))return"کامپیوتر";
+  return"نامشخص";
+}
+const resOf=r=>{const k=(r.answers||[])[7];return R[k]?R[k][1]:"—"};
+const pretty=r=>({...r,_m:model(r),_ua:parseUA(r.user_agent)});
+
+/* ---------- summary ---------- */
+function bars(parent,title,entries,total){
+  const c=mk("div","card");c.appendChild(mk("h3",null,title));
+  const max=Math.max(1,...entries.map(e=>e[1]));
+  if(!entries.length)c.appendChild(mk("div","mut","داده‌ای نیست"));
+  entries.forEach(([l,n])=>{
+    const b=mk("div","bar");b.appendChild(mk("span","lb",l));
+    const t=mk("span","tr"),i=document.createElement("i");i.style.width=(n/max*100)+"%";t.appendChild(i);b.appendChild(t);
+    b.appendChild(mk("span","n",fa(n)+(total?" ("+fa(Math.round(n/total*100))+"٪)":"")));
+    c.appendChild(b);
+  });
+  parent.appendChild(c);
+}
+function tally(arr,f){const m={};arr.forEach(x=>{const k=f(x);if(k)m[k]=(m[k]||0)+1});return Object.entries(m).sort((a,b)=>b[1]-a[1])}
+function renderAll(){
+  const P=rows.map(pretty),N=P.length;
+  const today=new Date().toDateString();
+  const mobile=P.filter(r=>/Android|iOS/.test(r._ua.os)).length;
+  const avg=P.filter(r=>r.duration_seconds!=null);
+  const st=$("stats");st.textContent="";
+  [[N,"کل پاسخ‌ها"],[P.filter(r=>new Date(r.created_at).toDateString()===today).length,"امروز"],[P.filter(r=>r.phone).length,"با شماره موبایل"],[P.filter(r=>r.comment).length,"با نظر"],[N?Math.round(mobile/N*100)+"٪":"—","از موبایل"],[avg.length?Math.round(avg.reduce((a,r)=>a+r.duration_seconds,0)/avg.length)+" ثانیه":"—","میانگین زمان تکمیل"],[P.filter(r=>r.invited_by).length,"آمده با لینک دعوت"]]
+   .forEach(([v,l])=>{const s=mk("div","stat");s.appendChild(mk("b",null,typeof v==="number"?fa(v):v));s.appendChild(mk("span",null,l));st.appendChild(s)});
+
+  const ch=$("charts");ch.textContent="";
+  const days=[];for(let i=13;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days.push(d)}
+  bars(ch,"پاسخ در ۱۴ روز اخیر",days.map(d=>[d.toLocaleDateString("fa-IR",{month:"short",day:"numeric"}),P.filter(r=>new Date(r.created_at).toDateString()===d.toDateString()).length]));
+  bars(ch,"تیپ نتیجه",tally(P,resOf),N);
+  bars(ch,"گروه سنی",tally(P,r=>r.age_range),N);
+  bars(ch,"مدل دستگاه",tally(P,r=>r._m).slice(0,10),N);
+  bars(ch,"سیستم‌عامل",tally(P,r=>r._ua.os),N);
+  bars(ch,"مرورگر",tally(P,r=>r._ua.br),N);
+  bars(ch,"کشور",tally(P,r=>r.country),N);
+  bars(ch,"منبع ورود (referrer)",tally(P,r=>{try{return r.device&&r.device.referrer?new URL(r.device.referrer).hostname:"مستقیم"}catch(e){return"مستقیم"}}).slice(0,8),N);
+  bars(ch,"بیشترین دعوت‌کننده‌ها",tally(P,r=>r.invited_by).slice(0,8).map(([k,n])=>["کد "+k,n]));
+
+  const qc=$("qcharts");qc.textContent="";
+  Q.forEach((q,qi)=>{
+    const counts=q[1].map(()=>0);P.forEach(r=>{const a=(r.answers||[])[qi];if(a>=0&&a<counts.length)counts[a]++});
+    bars(qc,fa(qi+1)+". "+q[0],q[1].map((t,i)=>[t,counts[i]]),N);
+  });
+
+  const sel=$("fres"),cur=sel.value;sel.length=1;
+  R.forEach(r=>{const o=document.createElement("option");o.value=r[1];o.textContent=r[0]+" "+r[1];sel.appendChild(o)});sel.value=cur;
+  renderList();
+}
+
+/* ---------- list ---------- */
+function renderList(){
+  const q=$("search").value.trim().toLowerCase(),fr=$("fres").value;
+  const P=rows.map(pretty).filter(r=>{
+    if(fr&&resOf(r)!==fr)return false;
+    if(!q)return true;
+    return [r.first_name,r.last_name,r.phone,r.comment,r._m,r._ua.os,r._ua.br,r.country,r.ip,r.age_range].join(" ").toLowerCase().includes(q)
+  });
+  const tb=$("tb");tb.textContent="";
+  if(!P.length){const tr=mk("tr");const td=mk("td","empty","پاسخی پیدا نشد.");td.colSpan=10;tr.appendChild(td);tb.appendChild(tr)}
+  P.forEach(r=>{
+    const tr=document.createElement("tr");tr.tabIndex=0;
+    const cells=[fmtDate(r.created_at),r.first_name+" "+r.last_name,r.age_range,r.phone||"—",resOf(r),r._m,r._ua.os,r._ua.br,r.country||"—"];
+    cells.forEach(c=>tr.appendChild(mk("td",null,c)));
+    tr.appendChild(mk("td","wrapc mut",r.comment?(r.comment.length>60?r.comment.slice(0,60)+"…":r.comment):"—"));
+    tr.onclick=()=>openDetail(r);tr.onkeydown=e=>{if(e.key==="Enter")openDetail(r)};
+    tb.appendChild(tr);
+  });
+  $("cntline").textContent=fa(P.length)+" از "+fa(rows.length)+" پاسخ";
+}
+function kv(parent,pairs){
+  const dl=document.createElement("dl");
+  pairs.forEach(([k,v])=>{if(v===undefined||v===null||v==="")return;dl.appendChild(mk("dt",null,k));dl.appendChild(mk("dd",null,typeof v==="object"?JSON.stringify(v):String(v)))});
+  parent.appendChild(dl)
+}
+function sec(parent,title){const s=mk("div","sec");s.appendChild(mk("h3",null,title));parent.appendChild(s);return s}
+function openDetail(r){
+  current=r;$("dtitle").textContent=r.first_name+" "+r.last_name;
+  const b=$("dbody");b.textContent="";
+  let s=sec(b,"مشخصات");
+  kv(s,[["زمان ثبت",fmtDate(r.created_at)],["سن",r.age_range],["موبایل",r.phone],["نتیجه تست",resOf(r)],["مدت تکمیل",r.duration_seconds!=null?fa(r.duration_seconds)+" ثانیه":null],["کد دعوت خودش",r.my_ref],["دعوت‌شده توسط کد",r.invited_by]]);
+  s=sec(b,"جواب‌ها");
+  Q.forEach((q,i)=>{const a=(r.answers||[])[i];const d=mk("div","qa");d.appendChild(mk("small",null,fa(i+1)+". "+q[0]));d.appendChild(mk("span",null,q[1][a]!=null?q[1][a]:"بی‌پاسخ"));s.appendChild(d)});
+  s=sec(b,"نظر");s.appendChild(r.comment?mk("div","cm",r.comment):mk("span","mut","نظری ننوشته."));
+  const d=r.device||{},u=d.uaData||{},c=d.connection||{};
+  s=sec(b,"دستگاه و مرورگر");
+  kv(s,[["مدل",r._m||model(r)],["سیستم‌عامل",parseUA(r.user_agent).os],["نسخه‌ی سیستم‌عامل (دقیق)",u.platformVersion],["مرورگر",parseUA(r.user_agent).br],["معماری CPU",u.architecture],["هسته‌های CPU",d.cpuCores],["رم تقریبی (گیگ)",d.memoryGB],["اندازه صفحه",d.screen],["اندازه پنجره",d.viewport],["تراکم پیکسل",d.pixelRatio],["لمسی",d.touchPoints!=null?(d.touchPoints>0?"بله":"خیر"):null],["حالت تیره",d.darkMode!=null?(d.darkMode?"بله":"خیر"):null]]);
+  s=sec(b,"موقعیت و شبکه");
+  kv(s,[["IP",r.ip],["کشور",r.country],["منطقه زمانی",d.timezone],["زبان",d.languages&&d.languages.join("، ")||d.language],["نوع اینترنت",c.type],["سرعت دانلود (Mbps)",c.downlink],["تأخیر (ms)",c.rtt]]);
+  s=sec(b,"منبع ورود");
+  kv(s,[["referrer",d.referrer],["صفحه",d.page],["UTM",d.utm]]);
+  s=sec(b,"User-Agent کامل");s.appendChild(mk("div","cm mut",r.user_agent||"—"));
+  $("dlg").showModal();
+}
+async function delCurrent(){
+  if(!current||!confirm("این پاسخ برای همیشه حذف می‌شه. مطمئنی؟"))return;
+  const r=await fetch(SUPABASE_URL+"/rest/v1/responses?id=eq."+encodeURIComponent(current.id),{method:"DELETE",headers:{apikey:SUPABASE_ANON_KEY,Authorization:"Bearer "+token,Prefer:"return=minimal"}});
+  if(!r.ok){alert("حذف نشد: "+await r.text());return}
+  $("dlg").close();await load();
+}
+
+/* ---------- CSV ---------- */
+function csvCell(v){
+  v=v==null?"":(typeof v==="object"?JSON.stringify(v):String(v));
+  if(/^[=+\-@\t\r]/.test(v))v="'"+v;           // جلوگیری از اجرای فرمول در Excel
+  return '"'+v.replace(/"/g,'""')+'"'
+}
+function exportCsv(){
+  const head=["زمان","نام","نام خانوادگی","سن","موبایل","نتیجه",...Q.map((q,i)=>"سوال "+(i+1)),"نظر","مدل دستگاه","سیستم‌عامل","مرورگر","IP","کشور","منطقه زمانی","اندازه صفحه","زبان","مدت (ثانیه)","کد دعوت","دعوت‌شده توسط","referrer","user_agent","device_json"];
+  const lines=[head.map(csvCell).join(",")];
+  rows.map(pretty).forEach(r=>{
+    const d=r.device||{};
+    lines.push([r.created_at,r.first_name,r.last_name,r.age_range,r.phone,resOf(r),...Q.map((q,i)=>q[1][(r.answers||[])[i]]),r.comment,r._m,r._ua.os,r._ua.br,r.ip,r.country,d.timezone,d.screen,d.language,r.duration_seconds,r.my_ref,r.invited_by,d.referrer,r.user_agent,r.device].map(csvCell).join(","));
+  });
+  const blob=new Blob(["\ufeff"+lines.join("\r\n")],{type:"text/csv;charset=utf-8"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="responses-"+new Date().toISOString().slice(0,10)+".csv";document.body.appendChild(a);a.click();a.remove();
+}
+
+/* ---------- wiring ---------- */
+$("lbtn").onclick=login;
+[$("em"),$("pw")].forEach(i=>i.addEventListener("keydown",e=>{if(e.key==="Enter")login()}));
+$("logout").onclick=logout;$("refresh").onclick=load;$("csv").onclick=exportCsv;
+$("search").oninput=renderList;$("fres").onchange=renderList;
+$("dclose").onclick=()=>$("dlg").close();$("ddel").onclick=delCurrent;
+function tab(sum){$("p-sum").classList.toggle("hide",!sum);$("p-list").classList.toggle("hide",sum);$("t-sum").setAttribute("aria-selected",sum);$("t-list").setAttribute("aria-selected",!sum)}
+$("t-sum").onclick=()=>tab(true);$("t-list").onclick=()=>tab(false);
+</script>
+</body>
+</html>
