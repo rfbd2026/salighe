@@ -125,6 +125,21 @@ textarea:focus-visible{outline:3px solid #fff}
   <div class="who"><span class="circ" aria-hidden="true">↓</span><span>سلام! من عارف هستم، طراح حرفه‌ای گرافیک. شما رو دعوت می‌کنم به یه همکاری کوچیک: ۱۰ سوال کوتاه تا با هم بفهمیم سلیقه‌ی تو چه شکلیه 👀</span></div>
   <p>۱۰ سوال کوتاه جواب بده؛ آخرش یه نتیجه‌ی بامزه درباره‌ی خودت می‌گیری، می‌تونی به دوستات هم معرفی کنی، و شاید اولین نفری باشی که محصول جدید من رو می‌بینی.</p>
   <div id="tgtop" class="tgtop"></div>
+  <button class="btn" id="start">بزن بریم!</button>
+</section>
+
+<section id="quiz" class="card hide">
+  <div class="bar"><i id="pb"></i></div>
+  <div class="cnt" id="cnt"></div>
+  <h2 id="q"></h2>
+  <div id="opts"></div>
+  <button class="back hide" id="back" type="button">سوال قبلی</button>
+</section>
+
+<section id="reg" class="card hide">
+  <div class="res" aria-hidden="true">🔒</div>
+  <h2>نتیجه‌ی تستت آماده‌ست!</h2>
+  <p>برای دیدنش اسمت رو بنویس. نتیجه رو همین‌جا بهت نشون می‌دم و یه پاسخ‌نامه هم به اسمت کنار می‌ذارم.</p>
   <div class="row">
     <div><label for="fn">نام</label><input id="fn" type="text" maxlength="60" autocomplete="given-name"></div>
     <div><label for="ln">نام خانوادگی</label><input id="ln" type="text" maxlength="60" autocomplete="family-name"></div>
@@ -134,16 +149,9 @@ textarea:focus-visible{outline:3px solid #fff}
   <label for="ph">شماره موبایل (اختیاری)</label>
   <input id="ph" type="tel" inputmode="tel" dir="ltr" autocomplete="tel" style="text-align:right">
   <div class="err" id="err" role="alert"></div>
-  <button class="btn" id="start">بزن بریم!</button>
-  <p class="trust">اطلاعاتت فقط برای بهتر شدن همین پروژه ذخیره می‌شه و جایی منتشر نمی‌شه. پیام تبلیغاتی مزاحم هم نمی‌فرستم.</p>
-</section>
-
-<section id="quiz" class="card hide">
-  <div class="bar"><i id="pb"></i></div>
-  <div class="cnt" id="cnt"></div>
-  <h2 id="q"></h2>
-  <div id="opts"></div>
-  <button class="back hide" id="back" type="button">سوال قبلی</button>
+  <button class="btn" id="seeres" type="button">دیدن نتیجه‌ام</button>
+  <p class="trust">اطلاعاتت (به‌همراه اطلاعات فنی دستگاهت مثل نوع گوشی، مرورگر و شهر تقریبی) فقط برای بهتر شدن همین پروژه ذخیره می‌شه و جایی منتشر نمی‌شه. پیام تبلیغاتی مزاحم هم نمی‌فرستم.</p>
+  <button class="back" id="regback" type="button">برگشت</button>
 </section>
 
 <section id="fold" class="hide">
@@ -234,16 +242,19 @@ async function collectDevice(){
 const $ = id => document.getElementById(id);
 const user = {}, ans = [];
 let i = 0;
-function show(id){["intro","quiz","fold","done"].forEach(s=>$(s).classList.toggle("hide",s!==id));window.scrollTo(0,0)}
-$("start").onclick = () => {
+function show(id){["intro","quiz","reg","fold","done"].forEach(s=>$(s).classList.toggle("hide",s!==id));window.scrollTo(0,0)}
+$("start").onclick = () => { show("quiz"); render(); };
+$("seeres").onclick = () => {
   const fn=$("fn").value.trim(), ln=$("ln").value.trim(), age=$("age").value;
   if(!fn||!ln||!age){$("err").textContent="لطفاً نام، نام خانوادگی و سن رو پر کن.";return}
   $("err").textContent="";
   const ph=$("ph").value.trim();
   if(ph&&!/^[0-9۰-۹+\s-]{7,16}$/.test(ph)){$("err").textContent="شماره موبایل درست نیست؛ می‌تونی خالیش بذاری.";return}
   Object.assign(user,{first:fn,last:ln,age:age,phone:ph});
-  show("quiz"); render();
+  $("seeres").disabled=true;
+  finish();
 };
+$("regback").onclick = () => { show("quiz"); renderComment(); };
 function render(){
   if(i===Q.length){renderComment();return}
   $("cnt").textContent="سوال "+(i+1).toLocaleString("fa")+" از "+Q.length.toLocaleString("fa");
@@ -260,14 +271,14 @@ function render(){
 }
 let lock=false,comment="";
 function renderComment(){
-  $("cnt").textContent="یه قدم آخر (اختیاری)";$("pb").style.width="100%";
+  $("cnt").textContent="یه قدم تا نتیجه (اختیاری)";$("pb").style.width="100%";
   $("q").textContent="نظرت چیه؟ هر پیشنهاد یا حرفی داری برام بنویس.";
   $("back").classList.remove("hide");
   const box=$("opts");box.textContent="";
   const t=document.createElement("textarea");t.id="cm";t.rows=4;t.maxLength=600;t.value=comment;t.setAttribute("aria-label","نظر شما");t.placeholder="مثلاً: دوست دارم یه محصول ... ببینم";box.appendChild(t);
   const h=document.createElement("p");h.className="trust";h.textContent="نوشتن نظر اختیاریه؛ اگه نمی‌خوای، همین دکمه رو بزن.";box.appendChild(h);
-  const b=document.createElement("button");b.className="btn";b.type="button";b.textContent="ثبت و دیدن نتیجه";
-  b.onclick=()=>{b.disabled=true;comment=t.value.trim();finish()};box.appendChild(b);
+  const b=document.createElement("button");b.className="btn";b.type="button";b.textContent="ادامه";
+  b.onclick=()=>{comment=t.value.trim();show("reg")};box.appendChild(b);
 }
 $("back").onclick=()=>{if(lock||i===0)return;if(i===Q.length){const t=$("cm");if(t)comment=t.value}i--;render()};
 function next(){ i++; render(); }
