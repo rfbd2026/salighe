@@ -139,7 +139,7 @@ textarea:focus-visible{outline:3px solid #fff}
 <section id="reg" class="card hide">
   <div class="res" aria-hidden="true">🔒</div>
   <h2>نتیجه‌ی تستت آماده‌ست!</h2>
-  <p>برای دیدنش اسمت رو بنویس. نتیجه رو همین‌جا بهت نشون می‌دم و یه پاسخ‌نامه هم به اسمت کنار می‌ذارم.</p>
+  <p>برای دیدنش اسمت رو بنویس. نتیجه کوتاه رو همین‌جا بهت نشون می‌دم و یه پاسخ‌نامه هم به اسمت کنار می‌ذارم.</p>
   <div class="row">
     <div><label for="fn">نام</label><input id="fn" type="text" maxlength="60" autocomplete="given-name"></div>
     <div><label for="ln">نام خانوادگی</label><input id="ln" type="text" maxlength="60" autocomplete="family-name"></div>
@@ -150,7 +150,7 @@ textarea:focus-visible{outline:3px solid #fff}
   <input id="ph" type="tel" inputmode="tel" dir="ltr" autocomplete="tel" style="text-align:right">
   <div class="err" id="err" role="alert"></div>
   <button class="btn" id="seeres" type="button">دیدن نتیجه‌ام</button>
-  <p class="trust">اطلاعاتت (به‌همراه اطلاعات فنی دستگاهت مثل نوع گوشی، مرورگر و شهر تقریبی) فقط برای بهتر شدن همین پروژه ذخیره می‌شه و جایی منتشر نمی‌شه. پیام تبلیغاتی مزاحم هم نمی‌فرستم.</p>
+  <p class="trust">اطلاعاتت فقط برای بهتر شدن همین پروژه ذخیره می‌شه و جایی منتشر نمی‌شه. پیام تبلیغاتی مزاحم هم نمی‌فرستم.</p>
   <button class="back" id="regback" type="button">برگشت</button>
 </section>
 
@@ -291,7 +291,7 @@ async function finish(){
   const r=R[ans[7]]||R[0];
   $("emoji").textContent=r[0]; $("rt").textContent="تو یه "+r[1]+" هستی"; $("rd").textContent=r[2];
   const box=$("tgbox"); box.textContent="";
-  tgBlock(box,"برای دیدن نتیجه‌ی این تست در آینده پیشنهاد می‌کنم توی کانال تلگرامی ما عضو بشید.");
+  tgBlock(box,"برای دیدن تست های کامل تر شخصیتی در آینده پیشنهاد می‌کنم توی کانال تلگرامی ما عضو بشید.");
   show("fold");$("fname").textContent="پاسخ‌نامه‌ی "+user.first;setTimeout(()=>{$("done").classList.remove("hide");$("done").scrollIntoView({behavior:"smooth",block:"start"})},matchMedia("(prefers-reduced-motion:reduce)").matches?300:5400);
   const rec=Object.assign({},user,{answers:ans.slice(),ts:Date.now(),myRef:MY_REF,invitedBy:INVITER,comment:comment});
   const device=await collectDevice();
